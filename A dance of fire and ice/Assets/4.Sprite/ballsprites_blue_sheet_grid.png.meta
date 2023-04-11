@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 83efdf4f6a89d3140ad9bf2e4e9a4532
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7448141134740414590
+    second: ballsprites_blue_sheet_grid_0
+  - first:
+      213: 4325820735053529364
+    second: ballsprites_blue_sheet_grid_1
+  - first:
+      213: -6406901018633504104
+    second: ballsprites_blue_sheet_grid_2
+  - first:
+      213: -5032135964312151949
+    second: ballsprites_blue_sheet_grid_3
+  - first:
+      213: 1874704739283999111
+    second: ballsprites_blue_sheet_grid_4
+  - first:
+      213: -7325855330749018657
+    second: ballsprites_blue_sheet_grid_5
+  - first:
+      213: -8008981016597796688
+    second: ballsprites_blue_sheet_grid_6
+  - first:
+      213: 8505442143627869214
+    second: ballsprites_blue_sheet_grid_7
+  - first:
+      213: 2697289273758666475
+    second: ballsprites_blue_sheet_grid_8
+  - first:
+      213: -3110581350573962920
+    second: ballsprites_blue_sheet_grid_9
+  - first:
+      213: -6736210752286030109
+    second: ballsprites_blue_sheet_grid_10
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 930.90906
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f92d29913e2a890800000000000000
+      internalID: -7448141134740414590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 837.90906
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41182e21a07680c30800000000000000
+      internalID: 4325820735053529364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 744.90906
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89af241087d1617a0800000000000000
+      internalID: -6406901018633504104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 651.90906
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378d4b970034a2ab0800000000000000
+      internalID: -5032135964312151949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 558.90906
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78993cb170a440a10800000000000000
+      internalID: 1874704739283999111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 465.9091
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd8dc60465555a90800000000000000
+      internalID: -7325855330749018657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 372.9091
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b867d4e2326ad090800000000000000
+      internalID: -8008981016597796688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 279.9091
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c739cd096690670800000000000000
+      internalID: 8505442143627869214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186.90909
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee4bdabd42be6520800000000000000
+      internalID: 2697289273758666475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93.90909
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85985120ebef4d4d0800000000000000
+      internalID: -3110581350573962920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballsprites_blue_sheet_grid_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.90908813
+        width: 128
+        height: 93.09091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e603d1c20c2482a0800000000000000
+      internalID: -6736210752286030109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

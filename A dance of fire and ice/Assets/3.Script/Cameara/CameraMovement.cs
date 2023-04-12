@@ -37,16 +37,6 @@ public class CameraMovement : MonoBehaviour
             targetPos.y = 1;
 
         }
-        //if (red.iscenter)
-        //{
-        //    targetPos.x = red.transform.position.x;
-        //    targetPos.y = red.transform.position.y;
-        //}
-        //else if (blue.iscenter)
-        //{
-        //    targetPos.x = blue.transform.position.x;
-        //    targetPos.y = blue.transform.position.y;
-        //}
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * damping);
     }
 }

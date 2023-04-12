@@ -10,8 +10,8 @@ public class movementDot : MonoBehaviour
     private DotController blue;
     private void Awake()
     {
-        red = GameObject.FindGameObjectWithTag("Red").GetComponent<DotController>();
-        blue = GameObject.FindGameObjectWithTag("Blue").GetComponent<DotController>();
+        GameObject.FindGameObjectWithTag("Red").GetComponent<DotController>().TryGetComponent(out red);
+        GameObject.FindGameObjectWithTag("Blue").GetComponent<DotController>().TryGetComponent(out blue);
     }
     void Update()
     {

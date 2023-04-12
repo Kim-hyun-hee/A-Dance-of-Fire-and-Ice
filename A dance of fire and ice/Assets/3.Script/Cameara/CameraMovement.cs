@@ -35,8 +35,11 @@ public class CameraMovement : MonoBehaviour
         {
             targetPos.x = centerpos.x;
             targetPos.y = 1;
-
+            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * damping);
         }
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * damping);
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(0, 0, -10), Time.deltaTime * damping);
+        }
     }
 }

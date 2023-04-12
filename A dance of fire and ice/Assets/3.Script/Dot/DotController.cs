@@ -15,12 +15,12 @@ public class DotController : MonoBehaviour
 
     void Update()
     {
-        var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
-        var type = assembly.GetType("UnityEditor.LogEntries");
-        var method = type.GetMethod("Clear");
-        method.Invoke(new object(), null);
-        Debug.Log(gameObject.tag + "  " + gameObject.transform.position.x + "  " + gameObject.transform.position.y);
-        Debug.Log(anotherDot.tag + "  " + anotherDot.transform.position.x + "  " + anotherDot.transform.position.y);
+        //var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
+        //var type = assembly.GetType("UnityEditor.LogEntries");
+        //var method = type.GetMethod("Clear");
+        //method.Invoke(new object(), null);
+        //Debug.Log(gameObject.tag + "  " + gameObject.transform.position.x + "  " + gameObject.transform.position.y);
+        //Debug.Log(anotherDot.tag + "  " + anotherDot.transform.position.x + "  " + anotherDot.transform.position.y);
         if (Input.anyKeyDown)
         {
             SetDotNextPos();
@@ -45,7 +45,7 @@ public class DotController : MonoBehaviour
                     //Debug.Log(gameObject.tag + " : 3");
                 }
             }
-            else if (pass) // 파란공이 center일때 여기가 안됨 / 빨간공이 center일때는 잘 작동함 ㅠ
+            else if (pass) // 파란공이 center일때 여기가 안됨 / 빨간공이 center일때는 잘 작동함 ㅠ / 여기인지 3번인지 헷갈림;
             {
                 if (!isCenter && !anotherDot.pass)
                 {
@@ -54,7 +54,7 @@ public class DotController : MonoBehaviour
             }
         }
     }
-    private void SetDotNextPos() // 그리고 왜 파란공 좌표는 정수로 안나옴?
+    private void SetDotNextPos() // 왜 파란공 좌표는 정수로 안나옴?
     {
         minDist = 2f;
         foreach (Collider2D col in Physics2D.OverlapCircleAll(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), 0.32f))

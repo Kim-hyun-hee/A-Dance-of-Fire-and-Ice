@@ -18,27 +18,37 @@ public class DotController : MonoBehaviour
         if (Input.anyKeyDown)
         {
             SetDotNextPos();
-            if (isCenter)
+            //var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
+            //var type = assembly.GetType("UnityEditor.LogEntries");
+            //var method = type.GetMethod("Clear");
+            //method.Invoke(new object(), null);
+
+            //Debug.Log(gameObject.tag + " isCenter : " + isCenter);
+            //Debug.Log(gameObject.tag + " pass : " + pass);
+            //Debug.Log(gameObject.tag + " anotherpass : " + anotherDot.pass);
+            if (!pass)
             {
-                if (!pass)
+                if (isCenter && !anotherDot.pass)
                 {
-                    isCenter = false;
+                    isCenter = !isCenter;
+                    Debug.Log(gameObject.tag + " : 1");
                 }
-                else
-                {
-                    isCenter = true;
-                }
-            }
-            else if(!isCenter)
-            {
-                if(!pass)
+                else if (!isCenter && !anotherDot.pass)
                 {
                     gameObject.transform.position = new Vector2(movePos.x, movePos.y);
-                    isCenter = true;
+                    isCenter = !isCenter;
+                    Debug.Log(gameObject.tag + " : 2");
                 }
-                else
+                else if (isCenter && anotherDot.pass)
                 {
-                    isCenter = false;
+                    Debug.Log(gameObject.tag + " : 3");
+                }
+            }
+            else if (pass) // 파란공이 center일때 여기가 안됨
+            {
+                if (!isCenter && !anotherDot.pass)
+                {
+                    Debug.Log(gameObject.tag + " : 4");
                 }
             }
         }
@@ -55,13 +65,13 @@ public class DotController : MonoBehaviour
                 && Vector2.Distance(col.gameObject.transform.localPosition, anotherDot.transform.position) < 1.1)
             {
                 // Debug.Log("한번 필터링" + col.gameObject.transform.localPosition.x + "  " + col.gameObject.transform.localPosition.y);
-                
+
                 dist = Vector2.Distance(col.gameObject.transform.localPosition, gameObject.transform.position);
                 if (dist < minDist)
                 {
                     movePos = new Vector2(col.gameObject.transform.localPosition.x, col.gameObject.transform.localPosition.y);
                     minDist = dist;
-                    if(col.gameObject.CompareTag("boundary")) // 마지막으로 갱신된 타일 정보 받아옴
+                    if (col.gameObject.CompareTag("boundary")) // 마지막으로 갱신된 타일 정보 받아옴
                     {
                         pass = true;
                     }

@@ -21,4 +21,13 @@ public class G_DotController : MonoBehaviour
             }
         }
     }
+    private void Judgement()
+    {
+
+    }
+
+    private void SetMovePos()
+    {
+
+    }
 }

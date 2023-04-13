@@ -29,6 +29,7 @@ public class CameraMovement : MonoBehaviour
     }
     private void LateUpdate() // LateUpdate()함수는 Scene에 있는 모든 스크립트의 Update()함수가 완료된 후 호출됨 -> 움직임이 완료되기 전에 카메라가 이동할 경우 떨림현상 발생 가능
     {
+        // 카메라 둠칫둠칫,,
         Vector3 targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z); // 카메라가 이동할 좌표
         if(centerpos.x > 2)
         {

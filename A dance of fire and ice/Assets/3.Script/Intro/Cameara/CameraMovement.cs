@@ -26,6 +26,11 @@ public class CameraMovement : MonoBehaviour
             center = blue;
         }
         centerpos = new Vector2(center.transform.position.x, center.transform.position.y);
+
+        if(Input.anyKeyDown)
+        {
+            StartCoroutine(cameraBounce_co());
+        }
     }
     private void LateUpdate() // LateUpdate()함수는 Scene에 있는 모든 스크립트의 Update()함수가 완료된 후 호출됨 -> 움직임이 완료되기 전에 카메라가 이동할 경우 떨림현상 발생 가능
     {
@@ -40,6 +45,22 @@ public class CameraMovement : MonoBehaviour
         else
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(0, 0, -10), Time.deltaTime * damping);
+        }
+    }
+    
+    IEnumerator cameraBounce_co()
+    {
+        float increment1 = 0.05f;
+        float increment2 = 0.01f;
+        while (Camera.main.orthographicSize >= 5.4)
+        {
+            Camera.main.orthographicSize -= increment1;
+            yield return new WaitForSeconds(0.001f);
+        }
+        while (Camera.main.orthographicSize < 5.5)
+        {
+            Camera.main.orthographicSize += increment2;
+            yield return new WaitForSeconds(0.02f);
         }
     }
 }

@@ -61,7 +61,7 @@ public class TileManagement : MonoBehaviour
             StartCoroutine(tileOnOff_co());
         }
     }
-    IEnumerator tileOnOff_co() // Dotcontroller에서 키 입력 받고 setPosition 한 다음 실행
+    IEnumerator tileOnOff_co()
     {
         if (red.iscenter)
         {

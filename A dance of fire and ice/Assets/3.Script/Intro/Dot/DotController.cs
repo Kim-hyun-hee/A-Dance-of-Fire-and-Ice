@@ -23,7 +23,7 @@ public class DotController : MonoBehaviour
     }
     IEnumerator setPosition_co()
     {
-        SetDotNextPos();
+        GetDotNextPos();
         yield return null;
         if (!pass)
         {
@@ -42,7 +42,7 @@ public class DotController : MonoBehaviour
     
     }
 
-    private void SetDotNextPos()
+    private void GetDotNextPos()
     {
         minDist = 2f;
         foreach (Collider2D col in Physics2D.OverlapCircleAll(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), 0.32f))

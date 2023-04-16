@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 907, y: 471}
-  m_MaxSize: {x: 22002, y: 14042}
+  m_MinSize: {x: 908, y: 471}
+  m_MaxSize: {x: 22003, y: 14042}
   vertical: 0
-  controlID: 4090
+  controlID: 6964
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,10 +134,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 907, y: 471}
-  m_MaxSize: {x: 22002, y: 14042}
+  m_MinSize: {x: 908, y: 471}
+  m_MaxSize: {x: 22003, y: 14042}
   vertical: 1
-  controlID: 4091
+  controlID: 6965
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,10 +161,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 538
-  m_MinSize: {x: 907, y: 271}
-  m_MaxSize: {x: 22002, y: 10021}
+  m_MinSize: {x: 908, y: 271}
+  m_MaxSize: {x: 22003, y: 10021}
   vertical: 0
-  controlID: 4092
+  controlID: 6966
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -184,8 +184,8 @@ MonoBehaviour:
     y: 0
     width: 856
     height: 538
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -442,7 +442,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 3ee6ffff60f3ffff96f4ffff1cfbffff
+      m_ExpandedIDs: 16daffff7edeffff3ee6ffff60f3ffff96f4ffff1cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -530,13 +530,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3.Script/Intro/Cameara
+    - Assets/1.Scene
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/3.Script/Intro/Cameara
+  - Assets/1.Scene
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\hyunhee\Documents\GitHub\A-Dance-of-Fire-and-Ice\A
     dance of fire and ice
@@ -544,8 +544,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c2480000
-    m_LastClickedID: 18626
+    m_SelectedIDs: ba480000
+    m_LastClickedID: 18618
     m_ExpandedIDs: 00000000ac480000ae480000b0480000b248000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -599,24 +599,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 56980000
-    m_LastClickedInstanceID: 38998
+    m_SelectedInstanceIDs: 14530000
+    m_LastClickedInstanceID: 21268
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000704400004a440000584400006844000064440000664400006c4400005e5900002a5e000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: DotController
-      m_OriginalName: DotController
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 5806
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -687,7 +687,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 38998
+  m_LastInspectedObjectInstanceID: 21268
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_LockTracker:
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_MinSize: {x: 441, y: 200}
   m_MaxSize: {x: 12001, y: 4021}
   vertical: 0
-  controlID: 4055
+  controlID: 6901
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 26114
+  m_LastSelectedObjectID: 38998
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -793,8 +793,8 @@ MonoBehaviour:
     y: 0
     width: 449
     height: 409
-  m_MinSize: {x: 240, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 242, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -850,8 +850,8 @@ MonoBehaviour:
     y: 0
     width: 656
     height: 409
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}

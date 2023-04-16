@@ -12,8 +12,7 @@ public class DotController : MonoBehaviour
     private float minDist;
     public Vector2Int movePos;
     private bool pass = false;
-    [SerializeField]
-    //private TileManagement grid;
+    
     void Update()
     {
         if (Input.anyKeyDown)

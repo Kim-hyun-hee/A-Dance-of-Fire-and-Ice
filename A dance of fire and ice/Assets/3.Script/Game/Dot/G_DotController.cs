@@ -18,7 +18,8 @@ public class G_DotController : MonoBehaviour
     private G_TileManagement tileManagement;
     [SerializeField]
     private GameObject collTile;
-    public Vector2Int movePos;
+    public Vector3Int movePos;
+    private Vector3 basePos;
     private JudgementUI judgementui;
 
     private void Awake()
@@ -50,9 +51,10 @@ public class G_DotController : MonoBehaviour
         {
             Judgement();
             //SetNextPos();
-            movePos = new Vector2Int((int)tiles[nextIndex].localPosition.x, (int)tiles[nextIndex].localPosition.y);
+            movePos = new Vector3Int((int)tiles[nextIndex].localPosition.x, (int)tiles[nextIndex].localPosition.y, 0);
             yield return null;
             anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
+            
             tiles[nextIndex].GetChild(0).gameObject.SetActive(true);
             ChangeState();
             yield return null;
@@ -74,6 +76,7 @@ public class G_DotController : MonoBehaviour
     }
     private void IsColNextTile()
     {
+        basePos = new Vector3(anotherDot.transform.position.x, anotherDot.transform.position.y, 0);
         // 돌고 있는 공이 블럭이랑 충돌인지 아닌지 구함 iscollision
         foreach (Collider2D col in Physics2D.OverlapCircleAll(new Vector2(anotherDot.transform.position.x, anotherDot.transform.position.y), 0.32f))
         {
@@ -123,4 +126,4 @@ public class G_DotController : MonoBehaviour
     }
 }
 
-    
+

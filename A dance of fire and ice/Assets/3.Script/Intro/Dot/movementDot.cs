@@ -14,11 +14,11 @@ public class movementDot : MonoBehaviour
     }
     void Update()
     {
-        if(red.iscenter)
+        if (red.iscenter)
         {
             blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
         }
-        else if(blue.iscenter)
+        else if (blue.iscenter)
         {
             red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
         }

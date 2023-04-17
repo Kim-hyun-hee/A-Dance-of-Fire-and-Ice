@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 public class G_DotController : MonoBehaviour
 {
@@ -10,49 +11,59 @@ public class G_DotController : MonoBehaviour
     private bool isCollision;
     [SerializeField]
     private int curIndex;
+    private int nextIndex;
+    public int nextindex => nextIndex;
     [SerializeField]
     private List<Transform> tiles;
     private G_TileManagement tileManagement;
     [SerializeField]
     private GameObject collTile;
     public Vector2Int movePos;
+    private JudgementUI judgementui;
 
     private void Awake()
     {
         FindObjectOfType<G_TileManagement>().transform.TryGetComponent(out tileManagement);
+        FindObjectOfType<JudgementUI>().gameObject.TryGetComponent(out judgementui);
         tiles = tileManagement.tiles;
-        
+    }
+    private void Start()
+    {
+        for (int i = 1; i < tiles.Count; i++)
+        {
+            tiles[i].GetChild(0).gameObject.SetActive(false);
+        }
     }
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            if(iscenter)
-            {
-                StartCoroutine(MoveDot_co());
-            }
+            StartCoroutine(MoveDot_co());
         }
     }
 
     IEnumerator MoveDot_co()
     {
-        IsColNextTile(); // IsCollision()랑 IsNextTile() 합쳐서 하나로 만들어야함!!
+        IsColNextTile();
         yield return null;
-        Debug.Log(isCollision);
         if (isCollision)
         {
             Judgement();
             //SetNextPos();
-            movePos = new Vector2Int((int)tiles[curIndex + 1].localPosition.x, (int)tiles[curIndex + 1].localPosition.y);
+            movePos = new Vector2Int((int)tiles[nextIndex].localPosition.x, (int)tiles[nextIndex].localPosition.y);
             yield return null;
-            curIndex += 2;
             anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
+            tiles[nextIndex].GetChild(0).gameObject.SetActive(true);
             ChangeState();
             yield return null;
         }
-        else
+        else if (anotherDot.transform.position.y > tiles[nextIndex].localPosition.y)
         {
-            // 실패 /  여기는 타일에 들어가기 전에 눌렀을때 실패 판정
+            judgementui.SetJudgement(3);
+        }
+        else if (anotherDot.transform.position.y < tiles[nextIndex].localPosition.y)
+        {
+            judgementui.SetJudgement(4);
         }
     }
 
@@ -66,12 +77,25 @@ public class G_DotController : MonoBehaviour
         // 돌고 있는 공이 블럭이랑 충돌인지 아닌지 구함 iscollision
         foreach (Collider2D col in Physics2D.OverlapCircleAll(new Vector2(anotherDot.transform.position.x, anotherDot.transform.position.y), 0.32f))
         {
-            if(col.gameObject.CompareTag("Tile") && col.gameObject.transform.localPosition.x == tiles[curIndex + 1].localPosition.x && col.gameObject.transform.localPosition.y == tiles[curIndex + 1].localPosition.y)
+            if (col.gameObject.CompareTag("Tile")) // 타일과 충돌하면
             {
-                collTile = col.gameObject;
-                isCollision = true;
-            } // 겹친 블록을 타일리스트 포문으로 돌려서 좌표가 같은 타일의 인덱스 구하고 다음인덱스라 지정
-            // 다음인덱스가 현재 인덱스 +1 이면 충돌 true 반환하기 -> 지금 위에처럼 하면 맨 마지막 블럭일때는 리스트 범위 벗어나서 에러 뜸!
+                int i;
+                for (i = 0; i < tiles.Count; i++) // 어느 타일인지 index 찾기
+                {
+                    if (tiles[i].localPosition.x == col.gameObject.transform.localPosition.x && tiles[i].localPosition.y == col.gameObject.transform.localPosition.y)
+                    {
+                        nextIndex = i;
+                        break;
+                    }
+                }
+                if (nextIndex == curIndex + 1) // 찾은 index가 currentIndex + 1 이라면
+                {
+                    collTile = col.gameObject; // 다음 블럭임
+                    curIndex += 2;
+                    isCollision = true;
+                    break;
+                }
+            }
             else
             {
                 collTile = GameObject.FindGameObjectWithTag("boundary").GetComponent<GameObject>();
@@ -80,42 +104,23 @@ public class G_DotController : MonoBehaviour
         }
     }
 
-    //private bool IsNextTile()
-    //{
-    //    int i;
-    //    // curIndex + 1 == nextIndex 인지 판단
-    //    for(i = 0; i < tiles.Count; i++)
-    //    {
-    //        if(tiles[i].localPosition.x == collTile.transform.localPosition.x && tiles[i].localPosition.y == collTile.transform.localPosition.y)
-    //        {
-    //            nextIndex = i;
-    //            break;
-    //        }
-    //    }
-    //    if (curIndex + 1 == nextIndex)
-    //    {
-    //        curIndex += 2;
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
-
     private void Judgement() // curIndex + 1 == nextIndex 일때
     {
         float dist;
-        dist = Vector2.Distance(anotherDot.transform.position, tiles[curIndex + 1].localPosition);
-        Debug.Log(dist);
-        // 돌고 있는 공이랑 타일의 거리 구해서 판정 / 정확! 빠름! 느림!
+        dist = Vector2.Distance(anotherDot.transform.position, tiles[nextIndex].localPosition);
+        if (dist < 0.3)
+        {
+            judgementui.SetJudgement(0);
+        }
+        else if (anotherDot.transform.position.y > tiles[nextIndex].localPosition.y)
+        {
+            judgementui.SetJudgement(1);
+        }
+        else if (anotherDot.transform.position.y < tiles[nextIndex].localPosition.y)
+        {
+            judgementui.SetJudgement(2);
+        }
     }
-
-    //private void SetNextPos()
-    //{
-    //    movePos = new Vector2Int((int)tiles[nextIndex].localPosition.x, (int)tiles[nextIndex].localPosition.y);
-    //    anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
-    //    // 돌고 있는 공의 위치를 nextIndex 타일의 위치로 조정
-    //}
 }
+
     

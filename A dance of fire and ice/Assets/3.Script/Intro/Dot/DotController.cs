@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
+using UnityEngine.SceneManagement;
 
 public class DotController : MonoBehaviour
 {[SerializeField] private bool isCenter;
@@ -32,9 +33,17 @@ public class DotController : MonoBehaviour
             }
             else if (!isCenter && !anotherDot.pass)
             {
-                gameObject.transform.position = new Vector2(movePos.x, movePos.y);
-
-                isCenter = !isCenter;
+                if(movePos.x == 13 && movePos.y == -1)
+                {
+                    SceneManager.LoadScene(7);
+                    gameObject.transform.position = new Vector2(movePos.x, movePos.y);
+                    isCenter = !isCenter;
+                }
+                else
+                {
+                    gameObject.transform.position = new Vector2(movePos.x, movePos.y);
+                    isCenter = !isCenter;
+                }
             }
         }
         yield return null;

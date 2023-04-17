@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class G_MovementDot : MonoBehaviour
 {
-
     [SerializeField] private float speed;
     private G_DotController red;
     private G_DotController blue;

@@ -35,7 +35,7 @@ public class DotController : MonoBehaviour
             {
                 if(movePos.x == 13 && movePos.y == -1)
                 {
-                    SceneManager.LoadScene(7);
+                    SceneManager.LoadScene(1);
                     gameObject.transform.position = new Vector2(movePos.x, movePos.y);
                     isCenter = !isCenter;
                 }

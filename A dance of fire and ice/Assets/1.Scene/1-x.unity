@@ -17846,10 +17846,10 @@ GameObject:
   - component: {fileID: 912331956}
   - component: {fileID: 912331955}
   - component: {fileID: 912331954}
-  - component: {fileID: 912331953}
   - component: {fileID: 912331952}
   - component: {fileID: 912331951}
   - component: {fileID: 912331950}
+  - component: {fileID: 912331953}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Blue
@@ -18029,7 +18029,8 @@ MonoBehaviour:
   curIndex: 1
   tiles: []
   collTile: {fileID: 1800650005}
-  movePos: {x: 0, y: 0}
+  movePos: {x: 0, y: 0, z: 0}
+  moveCenterPos: {x: 0, y: 0, z: 0}
 --- !u!212 &912331955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35353,10 +35354,10 @@ GameObject:
   - component: {fileID: 1734571463}
   - component: {fileID: 1734571469}
   - component: {fileID: 1734571468}
-  - component: {fileID: 1734571467}
   - component: {fileID: 1734571466}
   - component: {fileID: 1734571465}
   - component: {fileID: 1734571464}
+  - component: {fileID: 1734571467}
   m_Layer: 0
   m_Name: Red
   m_TagString: Red
@@ -35551,7 +35552,8 @@ MonoBehaviour:
   curIndex: 0
   tiles: []
   collTile: {fileID: 1800650005}
-  movePos: {x: 0, y: 0}
+  movePos: {x: 0, y: 0, z: 0}
+  moveCenterPos: {x: 0, y: 0, z: 0}
 --- !u!212 &1734571469
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -23,5 +23,4 @@ public class G_MovementDot : MonoBehaviour
             red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
         }
     }
-
 }

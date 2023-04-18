@@ -14,16 +14,22 @@ public class JudgementUI : MonoBehaviour
                 Debug.Log("정확");
                 return;
             case 1:
-                Debug.Log("빠름");
+                Debug.Log("빠름(초록)");
                 return;
             case 2:
-                Debug.Log("느림");
+                Debug.Log("빠름(주황)");
                 return;
             case 3:
                 Debug.Log("매우 빠름");
                 return;
             case 4:
                 Debug.Log("매우 느림");
+                return;
+            case 5:
+                Debug.Log("느림(주황)");
+                return;
+            case 6:
+                Debug.Log("느림(초록)");
                 return;
             default:
                 return;

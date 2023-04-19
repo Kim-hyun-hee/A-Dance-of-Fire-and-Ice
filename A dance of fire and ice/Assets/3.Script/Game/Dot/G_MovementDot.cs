@@ -14,13 +14,16 @@ public class G_MovementDot : MonoBehaviour
     }
     void Update()
     {
-        if (red.iscenter)
+        if (GameManager.instance.currentGameState == GameState.gameStart || GameManager.instance.currentGameState == GameState.gameClear)
         {
-            blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
-        }
-        else if (blue.iscenter)
-        {
-            red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
+            if (red.iscenter)
+            {
+                blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
+            }
+            else if (blue.iscenter)
+            {
+                red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
+            }
         }
     }
 }

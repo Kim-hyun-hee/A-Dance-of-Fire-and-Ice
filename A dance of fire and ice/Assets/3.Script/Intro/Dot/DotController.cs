@@ -5,7 +5,8 @@ using System.Reflection;
 using UnityEngine.SceneManagement;
 
 public class DotController : MonoBehaviour
-{[SerializeField] private bool isCenter;
+{
+    [SerializeField] private bool isCenter;
     [SerializeField] private DotController anotherDot;
     public bool iscenter => isCenter;
     

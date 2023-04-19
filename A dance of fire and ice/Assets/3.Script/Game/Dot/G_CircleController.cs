@@ -14,6 +14,7 @@ public class G_CircleController : MonoBehaviour
     private float speed;
     private SpriteRenderer blueRenderer;
     private SpriteRenderer redRenderer;
+    private SpriteRenderer blueDotRenderer;
 
     void Awake()
     {
@@ -21,6 +22,7 @@ public class G_CircleController : MonoBehaviour
         GameObject.FindGameObjectWithTag("Blue").GetComponent<G_DotController>().TryGetComponent(out blue);
         blueRenderer = blueRing.GetComponent<SpriteRenderer>();
         redRenderer = redRing.GetComponent<SpriteRenderer>();
+        blueDotRenderer = blue.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -29,10 +31,12 @@ public class G_CircleController : MonoBehaviour
         {
             blueRenderer.enabled = false;
             redRenderer.enabled = false;
+            blueDotRenderer.enabled = false;
         }
         
         if(GameManager.instance.currentGameState == GameState.gameStart || GameManager.instance.currentGameState == GameState.gameClear)
         {
+            blueDotRenderer.enabled = true;
             if (red.iscenter)
             {
                 blueRenderer.enabled = false;

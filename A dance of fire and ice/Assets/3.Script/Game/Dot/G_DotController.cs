@@ -24,12 +24,14 @@ public class G_DotController : MonoBehaviour
     private float angle;
     private float moveVx;
     private float moveVy;
+    public int count;
 
     private void Awake()
     {
         FindObjectOfType<G_TileManagement>().transform.TryGetComponent(out tileManagement);
         FindObjectOfType<JudgementUI>().gameObject.TryGetComponent(out judgementui);
         tiles = tileManagement.tiles;
+        count = 0;
     }
     private void Start()
     {
@@ -49,6 +51,7 @@ public class G_DotController : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                count++;
                 // 초반 비트 끝나고 게임 스타트로 바꾸기 / 아니면 초반에 3 2 1 할때 게임오버 판정일 것으로 예상됨 / 모르겠어!!!! 게임 스타트로 바뀌면 아무키나눌러시작하기 없어지도록 했는데 어캄 ㅠㅠ
                 // 3 2 1 자리
                 GameManager.instance.StartGame();
@@ -82,27 +85,27 @@ public class G_DotController : MonoBehaviour
         float ang = angle * Mathf.Deg2Rad;
         moveVx = baseV.x * Mathf.Cos((ang + Mathf.PI)) - baseV.y * Mathf.Sin((ang + Mathf.PI));
         moveVy = baseV.x * Mathf.Sin((ang + Mathf.PI)) + baseV.y * Mathf.Cos((ang + Mathf.PI));
-        if (angle < 10 || angle >= 350) // 정확
+        if ((angle < 15 || angle >= 345) && (count + anotherDot.count > 1)) // 정확
         {
             judgementui.SetJudgement(0);
         }
-        if (angle >= 10 && angle < 30) // 빠름(초록)
+        if ((angle >= 15 && angle < 30) && (count + anotherDot.count > 1)) // 빠름(초록)
         {
             judgementui.SetJudgement(1);
         }
-        if (angle >= 30 && angle < 70) // 빠름(주황)
+        if ((angle >= 30 && angle < 70) && (count + anotherDot.count > 1)) // 빠름(주황)
         {
             judgementui.SetJudgement(2);
         }
-        if (angle >= 290 && angle < 330) // 느림(주황)
+        if ((angle >= 290 && angle < 330) && (count + anotherDot.count > 1)) // 느림(주황)
         {
             judgementui.SetJudgement(5);
         }
-        if (angle >= 330 && angle < 350) // 느림(초록)
+        if ((angle >= 330 && angle < 345) && (count + anotherDot.count > 1)) // 느림(초록)
         {
             judgementui.SetJudgement(6);
         }
-        if (angle >= 70 && angle <= 180) // 매우빠름
+        if ((angle >= 70 && angle <= 180) && (count + anotherDot.count > 1)) // 매우빠름
         {
             judgementui.SetJudgement(3);
         }

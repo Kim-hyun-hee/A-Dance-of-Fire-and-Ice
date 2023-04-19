@@ -9,6 +9,7 @@ TagManager:
   - Tile
   - boundary
   - UpDown
+  - Rotate
   layers:
   - Default
   - TransparentFX

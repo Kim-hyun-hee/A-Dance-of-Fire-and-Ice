@@ -55,8 +55,6 @@ public class TileManagement : MonoBehaviour
             changeTiles[i].gameObject.GetComponent<Tilemap>().color = transColor;
         }
         isTileOn = false;
-        redEff.Play();
-        blueEff.Play();
     }
     void Update()
     {
@@ -82,18 +80,18 @@ public class TileManagement : MonoBehaviour
         
         if (centerpos.x == 0 && centerpos.y == 0 && !isTileOn)
         {
-            StopCoroutine("LerpColor_co");
-            StartCoroutine(LerpColor_co(tileColor, logoColor, tableColor, transColor, orignalColor)); // 타일 켜기 로고 끄기 테이블 켜기
             redEff.Stop();
             blueEff.Stop();
+            StopCoroutine("LerpColor_co");
+            StartCoroutine(LerpColor_co(tileColor, logoColor, tableColor, transColor, orignalColor)); // 타일 켜기 로고 끄기 테이블 켜기
             isTileOn = true;
         }
         else if (aroundDot.movePos.x == 0 && aroundDot.movePos.y == 0 && isTileOn)
         {
-            StopCoroutine("LerpColor_co");
-            StartCoroutine(LerpColor_co(tileColor, logoColor, tableColor, orignalColor, transColor)); // 타일 끄기 로고 켜기 테이블 켜기
             redEff.Play();
             blueEff.Play();
+            StopCoroutine("LerpColor_co");
+            StartCoroutine(LerpColor_co(tileColor, logoColor, tableColor, orignalColor, transColor)); // 타일 끄기 로고 켜기 테이블 켜기
             isTileOn = false;
         }
     }

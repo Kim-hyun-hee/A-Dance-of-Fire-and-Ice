@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentGameState == GameState.gameOver && Input.anyKeyDown) // 게임오버하면 다시 시작하기
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if(currentGameState == GameState.gameClear && Input.anyKeyDown)
@@ -50,14 +50,19 @@ public class GameManager : MonoBehaviour
             // 게임 클리어하면 다음 스테이지로 넘어가기
             if (SceneManager.GetActiveScene().buildIndex < 7)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else if (SceneManager.GetActiveScene().buildIndex == 7)
             {
-                SceneManager.LoadScene(0);
+                LoadScene(0);
             }
         }
         Debug.Log(currentGameState);
+    }
+    public void LoadScene(int num)
+    {
+        SceneManager.LoadScene(num);
+        // 검은 배경 이동
     }
     public void StartGame()
     {

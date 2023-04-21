@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState currentGameState;
+    public AudioSource audioSource;
+
     private void Awake()
     {
         if (instance == null)
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             instance.SetGameState(GameState.inGame);
         }
+        TryGetComponent(out audioSource);
     }
     private void Update()
     {
@@ -97,7 +100,11 @@ public class GameManager : MonoBehaviour
         }
         else if(newGameState == GameState.gameOver)
         {
-
+            if (audioSource.isPlaying)
+            {
+                instance.audioSource.Stop();
+            }
+            // 게임 씬 7 일때만 게임 오버 파티클                         
         }
         currentGameState = newGameState;
     }

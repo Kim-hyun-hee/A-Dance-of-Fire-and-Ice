@@ -21,6 +21,8 @@ public class G_DotController : MonoBehaviour
     public Vector3 moveCenterPos;
     private Vector3 anotherV;
     private JudgementUI judgementui;
+    [SerializeField]
+    private ScoreUI scoreui;
     public float angle;
     private float moveVx;
     private float moveVy;
@@ -44,7 +46,6 @@ public class G_DotController : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(gameObject + "   " + sCount);
         if(tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position)
         {
             GameManager.instance.SetGameState(GameState.gameClear);
@@ -60,19 +61,26 @@ public class G_DotController : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 count++;
-                // 초반 비트 끝나고 게임 스타트로 바꾸기 / 아니면 초반에 3 2 1 할때 게임오버 판정일 것으로 예상됨 / 모르겠어!!!! 게임 스타트로 바뀌면 아무키나눌러시작하기 없어지도록 했는데 어캄 ㅠㅠ
-                // 3 2 1 자리
+                // 3 2 1 자리 / 이땐 판정 안들어가게 해야함
+                if (!GameManager.instance.audioSource.isPlaying)
+                {
+                    GameManager.instance.audioSource.Play();
+                }
                 GameManager.instance.StartGame();
                 //
                 //StartCoroutine(GetMoveDotPos_co());
             }
             if (GameManager.instance.currentGameState == GameState.gameStart && sCount == 1) // 얘를 어떡하지
             {
-                if ((angle > 299 && angle < 300) && (count + anotherDot.count > 1)) // 매우느림
+                if ((angle > 270 && angle < 290) && (count + anotherDot.count > 1)) // 매우느림
                 {
                     judgementui.SetJudgement(4);
                     // 실패처리
                     GameManager.instance.SetGameState(GameState.gameOver);
+                    if (SceneManager.GetActiveScene().buildIndex == 7)
+                    {
+                        scoreui.SetScore((curIndex + 1) * 100 / tiles.Count);
+                    }
                 }
             }
         }
@@ -106,7 +114,7 @@ public class G_DotController : MonoBehaviour
             {
                 judgementui.SetJudgement(2);
             }
-            if ((angle >= 300 && angle < 330) && (count + anotherDot.count > 1)) // 느림(주황)
+            if ((angle >= 290 && angle < 330) && (count + anotherDot.count > 1)) // 느림(주황)
             {
                 judgementui.SetJudgement(5);
             }
@@ -118,7 +126,7 @@ public class G_DotController : MonoBehaviour
             {
                 judgementui.SetJudgement(3);
             }
-            if ((angle < 70 || angle > 300) && (angle < 60 || angle > 180))
+            if ((angle < 70 || angle > 290) && (angle < 60 || angle > 180))
             {
                 sCount = 0;
                 moveCenterPos = new Vector3((int)tiles[curIndex + 1].localPosition.x + moveVx, (int)tiles[curIndex + 1].localPosition.y + moveVy, 0); // 센터 공 싱크 조절용

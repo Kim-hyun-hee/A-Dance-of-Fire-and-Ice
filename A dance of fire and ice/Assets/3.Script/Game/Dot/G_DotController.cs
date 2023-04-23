@@ -46,7 +46,7 @@ public class G_DotController : MonoBehaviour
     }
     void Update()
     {
-        if(tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position)
+        if (tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position)
         {
             GameManager.instance.SetGameState(GameState.gameClear);
         }
@@ -58,17 +58,16 @@ public class G_DotController : MonoBehaviour
             {
                 sCount = 1;
             }
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && GameManager.instance.currentGameState != GameState.loading)
             {
-                count++;
-                // 3 2 1 자리 / 이땐 판정 안들어가게 해야함
-                if (!GameManager.instance.audioSource.isPlaying)
+                if(!Input.GetKeyDown(KeyCode.Escape))
                 {
-                    GameManager.instance.audioSource.Play();
+                    count++;
+                    // 3 2 1 자리 / 이땐 판정 안들어가게 해야함
+                    GameManager.instance.StartGame();
+                    //
+                    //StartCoroutine(GetMoveDotPos_co());
                 }
-                GameManager.instance.StartGame();
-                //
-                //StartCoroutine(GetMoveDotPos_co());
             }
             if (GameManager.instance.currentGameState == GameState.gameStart && sCount == 1) // 얘를 어떡하지
             {
@@ -102,43 +101,46 @@ public class G_DotController : MonoBehaviour
         moveVy = baseV.x * Mathf.Sin((ang + Mathf.PI)) + baseV.y * Mathf.Cos((ang + Mathf.PI));
         if (GameManager.instance.currentGameState == GameState.gameStart && Input.anyKeyDown && sCount == 1)
         {
-            if ((angle < 15 || angle >= 345) && (count + anotherDot.count > 1)) // 정확
+            if(!Input.GetKeyDown(KeyCode.Escape))
             {
-                judgementui.SetJudgement(0);
-            }
-            if ((angle >= 15 && angle < 30) && (count + anotherDot.count > 1)) // 빠름(초록)
-            {
-                judgementui.SetJudgement(1);
-            }
-            if ((angle >= 30 && angle < 60) && (count + anotherDot.count > 1)) // 빠름(주황)
-            {
-                judgementui.SetJudgement(2);
-            }
-            if ((angle >= 290 && angle < 330) && (count + anotherDot.count > 1)) // 느림(주황)
-            {
-                judgementui.SetJudgement(5);
-            }
-            if ((angle >= 330 && angle < 345) && (count + anotherDot.count > 1)) // 느림(초록)
-            {
-                judgementui.SetJudgement(6);
-            }
-            if ((angle >= 60 && angle <= 180) && (count + anotherDot.count > 1)) // 매우빠름
-            {
-                judgementui.SetJudgement(3);
-            }
-            if ((angle < 70 || angle > 290) && (angle < 60 || angle > 180))
-            {
-                sCount = 0;
-                moveCenterPos = new Vector3((int)tiles[curIndex + 1].localPosition.x + moveVx, (int)tiles[curIndex + 1].localPosition.y + moveVy, 0); // 센터 공 싱크 조절용
-                movePos = new Vector3Int((int)tiles[curIndex + 1].localPosition.x, (int)tiles[curIndex + 1].localPosition.y, 0); // 도는 공이 정착할 타일 좌표
-                anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
-                transform.position = new Vector2(moveCenterPos.x, moveCenterPos.y);
-                tiles[curIndex + 1].GetChild(0).gameObject.SetActive(true);
-                if (curIndex + 2 < tiles.Count - 1)
+                if ((angle < 15 || angle >= 345) && (count + anotherDot.count > 1)) // 정확
                 {
-                    curIndex += 2;
+                    judgementui.SetJudgement(0);
                 }
-                ChangeState();
+                if ((angle >= 15 && angle < 30) && (count + anotherDot.count > 1)) // 빠름(초록)
+                {
+                    judgementui.SetJudgement(1);
+                }
+                if ((angle >= 30 && angle < 60) && (count + anotherDot.count > 1)) // 빠름(주황)
+                {
+                    judgementui.SetJudgement(2);
+                }
+                if ((angle >= 290 && angle < 330) && (count + anotherDot.count > 1)) // 느림(주황)
+                {
+                    judgementui.SetJudgement(5);
+                }
+                if ((angle >= 330 && angle < 345) && (count + anotherDot.count > 1)) // 느림(초록)
+                {
+                    judgementui.SetJudgement(6);
+                }
+                if ((angle >= 60 && angle <= 180) && (count + anotherDot.count > 1)) // 매우빠름
+                {
+                    judgementui.SetJudgement(3);
+                }
+                if ((angle < 70 || angle > 290) && (angle < 60 || angle > 180))
+                {
+                    sCount = 0;
+                    moveCenterPos = new Vector3((int)tiles[curIndex + 1].localPosition.x + moveVx, (int)tiles[curIndex + 1].localPosition.y + moveVy, 0); // 센터 공 싱크 조절용
+                    movePos = new Vector3Int((int)tiles[curIndex + 1].localPosition.x, (int)tiles[curIndex + 1].localPosition.y, 0); // 도는 공이 정착할 타일 좌표
+                    anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
+                    transform.position = new Vector2(moveCenterPos.x, moveCenterPos.y);
+                    tiles[curIndex + 1].GetChild(0).gameObject.SetActive(true);
+                    if (curIndex + 2 < tiles.Count - 1)
+                    {
+                        curIndex += 2;
+                    }
+                    ChangeState();
+                }
             }
         }
     }

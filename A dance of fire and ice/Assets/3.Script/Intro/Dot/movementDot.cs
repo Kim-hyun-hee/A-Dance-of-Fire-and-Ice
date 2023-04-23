@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class movementDot : MonoBehaviour
 {
-    [SerializeField] private float speed;
     private DotController red;
     private DotController blue;
+    public int Bpm;
     private void Awake()
     {
         GameObject.FindGameObjectWithTag("Red").GetComponent<DotController>().TryGetComponent(out red);
@@ -16,11 +16,11 @@ public class movementDot : MonoBehaviour
     {
         if (red.iscenter)
         {
-            blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
+            blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * Bpm) / 60);
         }
         else if (blue.iscenter)
         {
-            red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), speed * Time.deltaTime);
+            red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * Bpm) / 60);
         }
     }
 

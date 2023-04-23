@@ -10,7 +10,7 @@ public class IngameUI : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.instance.currentGameState == GameState.inGame)
+        if(GameManager.instance.currentGameState == GameState.loading || GameManager.instance.currentGameState == GameState.inGame)
         {
             inputAnykey_UI.SetActive(true);
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScreenEff : MonoBehaviour
 {
@@ -11,12 +12,10 @@ public class ScreenEff : MonoBehaviour
     {
         UItransform = GetComponent<RectTransform>();
     }
-    void Start()
+   
+    public IEnumerator Move_co()
     {
-        StartCoroutine(Move_co());
-    }
-    IEnumerator Move_co()
-    {
+        GameManager.instance.SetGameState(GameState.loading);
         while (true)
         {
             if (UItransform.transform.position.x < -3000)
@@ -25,6 +24,14 @@ public class ScreenEff : MonoBehaviour
             }
             UItransform.transform.position += moveDirection * moveSpeed * Time.deltaTime;
             yield return 0.01f;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            GameManager.instance.SetGameState(GameState.lobi);
+        }
+        else
+        {
+            GameManager.instance.SetGameState(GameState.inGame);
         }
     }
 }

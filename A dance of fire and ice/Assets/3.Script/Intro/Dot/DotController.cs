@@ -20,7 +20,10 @@ public class DotController : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            StartCoroutine(setPosition_co());
+            if(!Input.GetKeyDown(KeyCode.Escape))
+            {
+                StartCoroutine(setPosition_co());
+            }
         }
     }
     IEnumerator setPosition_co()

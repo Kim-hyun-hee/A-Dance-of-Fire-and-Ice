@@ -10,18 +10,24 @@ public enum GameState
     inGame,
     gameStart,
     gameClear,
-    gameOver
+    gameOver,
+    loading,
+    pause
 }
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState currentGameState;
+    public GameState preGameState;
     public AudioSource audioSource;
-
+    public ScreenEff screenEff;
+    public bool isPause;
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+        }
         else
         {
             Debug.Log("이미 게임 매니저는 존재합니다.");
@@ -31,41 +37,69 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            instance.SetGameState(GameState.lobi);
-        }
-        else
-        {
-            instance.SetGameState(GameState.inGame);
-        }
         TryGetComponent(out audioSource);
+        FindObjectOfType<ScreenEff>().TryGetComponent(out screenEff);
+        StartCoroutine(screenEff.Move_co());
+        isPause = false;
     }
     private void Update()
     {
         if (currentGameState == GameState.gameOver && Input.anyKeyDown) // 게임오버하면 다시 시작하기
         {
-            LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if(!Input.GetKeyDown(KeyCode.Escape))
+            {
+                LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
         if(currentGameState == GameState.gameClear && Input.anyKeyDown)
         {
-            // 게임 클리어하면 다음 스테이지로 넘어가기
-            if (SceneManager.GetActiveScene().buildIndex < 7)
+            if(!Input.GetKeyDown(KeyCode.Escape))
             {
-                LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else if (SceneManager.GetActiveScene().buildIndex == 7)
-            {
-                LoadScene(0);
+                // 게임 클리어하면 다음 스테이지로 넘어가기
+                if (SceneManager.GetActiveScene().buildIndex < 7)
+                {
+                    LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 7)
+                {
+                    LoadScene(0);
+                }
             }
         }
         Debug.Log(currentGameState);
+
+        if(Input.GetKeyDown(KeyCode.Escape)) // 일시정지
+        {
+            if(isPause == false)
+            {
+                preGameState = currentGameState;
+                SetGameState(GameState.pause);
+                Time.timeScale = 0;
+                if(instance.audioSource.isPlaying)
+                {
+                    instance.audioSource.Pause();
+                }
+                isPause = true;
+                return;
+            }
+
+            if(isPause == true)
+            {
+                currentGameState = preGameState;
+                Time.timeScale = 1;
+                if (!instance.audioSource.isPlaying && currentGameState == GameState.gameStart)
+                {
+                    instance.audioSource.Play();
+                }
+                isPause = false;
+                return;
+            }
+        }
     }
     public void LoadScene(int num)
     {
         SceneManager.LoadScene(num);
-        // 검은 배경 이동
     }
     public void StartGame()
     {
@@ -92,7 +126,10 @@ public class GameManager : MonoBehaviour
         }
         else if(newGameState == GameState.gameStart)
         {
-
+            if (!instance.audioSource.isPlaying)
+            {
+                instance.audioSource.Play();
+            }
         }
         else if (newGameState == GameState.gameClear)
         {

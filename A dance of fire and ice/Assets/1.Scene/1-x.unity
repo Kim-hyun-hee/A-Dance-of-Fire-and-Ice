@@ -8586,7 +8586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &397029590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16771,6 +16771,7 @@ MonoBehaviour:
   latePrefab: {fileID: 4401172293826426197, guid: a936dc8c68b912d4f83c14f2220a825f, type: 3}
   vEarlyPrefab: {fileID: 8428373811480101062, guid: 66d95512d54c4074bb1bee9410c6e490, type: 3}
   vLatePrefab: {fileID: 1538394159674914777, guid: 7b51009077823f749b038658de2fae4b, type: 3}
+  overLoadPrefab: {fileID: 4035535868927446455, guid: f60dcb6545aeed64c92e1f247bcd84bf, type: 3}
   Canvas: {fileID: 671874768}
 --- !u!4 &835985198
 Transform:
@@ -38902,7 +38903,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGameState: 0
+  preGameState: 0
   audioSource: {fileID: 0}
+  screenEff: {fileID: 0}
+  isPause: 0
 --- !u!4 &1844879956
 Transform:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class G_CircleController : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.instance.currentGameState == GameState.inGame)
+        if(GameManager.instance.currentGameState == GameState.inGame || GameManager.instance.currentGameState == GameState.loading)
         {
             blueRenderer.enabled = false;
             redRenderer.enabled = false;

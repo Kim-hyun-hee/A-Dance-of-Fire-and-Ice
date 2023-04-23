@@ -60,7 +60,10 @@ public class TileManagement : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            StartCoroutine(tileOnOff_co());
+            if(!Input.GetKeyDown(KeyCode.Escape))
+            {
+                StartCoroutine(tileOnOff_co());
+            }
         }
     }
     IEnumerator tileOnOff_co()

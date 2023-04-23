@@ -12,6 +12,7 @@ public class JudgementUI : MonoBehaviour
     [SerializeField] GameObject latePrefab;
     [SerializeField] GameObject vEarlyPrefab;
     [SerializeField] GameObject vLatePrefab;
+    [SerializeField] GameObject overLoadPrefab;
     private GameObject curPrefab;
     public Queue<GameObject> prefabQueue;
     public Queue<GameObject> overloadQueue;
@@ -108,12 +109,19 @@ public class JudgementUI : MonoBehaviour
         {
             if (red.iscenter && num != 3 && num != 4)
             {
-                latePrefab.GetComponent<JudgementUIPositionSet>().Setup(red.tiles[red.curIndex + 1].gameObject, num);
+                curPrefab = Instantiate(overLoadPrefab);
+                curPrefab.transform.SetParent(Canvas);
+                curPrefab.transform.localScale = Vector3.one;
+                curPrefab.GetComponent<JudgementUIPositionSet>().Setup(red.tiles[red.curIndex + 1].gameObject, num);
             }
             if (blue.iscenter && num != 3 && num != 4)
             {
-                latePrefab.GetComponent<JudgementUIPositionSet>().Setup(blue.tiles[red.curIndex].gameObject, num);
+                curPrefab = Instantiate(overLoadPrefab);
+                curPrefab.transform.SetParent(Canvas);
+                curPrefab.transform.localScale = Vector3.one;
+                curPrefab.GetComponent<JudgementUIPositionSet>().Setup(blue.tiles[red.curIndex].gameObject, num);
             }
+            Debug.Log("°úºÎÇÏ...");
             GameManager.instance.SetGameState(GameState.gameOver);
         }
         yield return new WaitForSeconds(0.9f);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class G_MovementDot : MonoBehaviour
 {
-    [SerializeField] private int Bpm;
+    [SerializeField] private float Bpm;
     private G_DotController red;
     private G_DotController blue;
     private void Awake()

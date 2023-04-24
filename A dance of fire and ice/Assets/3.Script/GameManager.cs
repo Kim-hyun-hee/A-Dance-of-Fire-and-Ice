@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public ScreenEff screenEff;
     public bool isPause;
+    public float Bpm;
+    public float time;
     private void Awake()
     {
         if (instance == null)
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<ScreenEff>().TryGetComponent(out screenEff);
         StartCoroutine(screenEff.Move_co());
         isPause = false;
+        time = 60 / Bpm;
     }
     private void Update()
     {
@@ -116,7 +119,7 @@ public class GameManager : MonoBehaviour
         {
             if (!instance.audioSource.isPlaying)
             {
-                instance.audioSource.Play();
+                StartCoroutine(StartMusic_co());
             }
         }
         else if (newGameState == GameState.gameClear)
@@ -132,5 +135,10 @@ public class GameManager : MonoBehaviour
             // 게임 씬 7 일때만 게임 오버 파티클                         
         }
         currentGameState = newGameState;
+    }
+    IEnumerator StartMusic_co()
+    {
+        yield return new WaitForSeconds(time);
+        instance.audioSource.Play();
     }
 }

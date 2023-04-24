@@ -478,9 +478,6 @@ MonoBehaviour:
   moveCenterPos: {x: 0, y: 0, z: 0}
   scoreui: {fileID: 959760963}
   angle: 0
-  count: 0
-  sCount: 0
-  cCount: 0
 --- !u!114 &31644273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2293,9 +2290,6 @@ MonoBehaviour:
   moveCenterPos: {x: 0, y: 0, z: 0}
   scoreui: {fileID: 959760963}
   angle: 0
-  count: 0
-  sCount: 0
-  cCount: 0
 --- !u!212 &430457778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2355,7 +2349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430457772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1782236478}
@@ -6120,6 +6114,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271735230}
   m_CullTransparentMesh: 1
+--- !u!1 &1272122549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272122551}
+  - component: {fileID: 1272122550}
+  m_Layer: 0
+  m_Name: StartUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1272122550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272122549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d279cb2fa07025458a5b8b9be66b422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bpm: 140
+--- !u!4 &1272122551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272122549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 971.06934, y: 624.2303, z: -1474.9321}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337460246
 GameObject:
   m_ObjectHideFlags: 0
@@ -6987,6 +7025,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   screenEff: {fileID: 0}
   isPause: 0
+  Bpm: 140
+  time: 0
 --- !u!4 &1648701185
 Transform:
   m_ObjectHideFlags: 0

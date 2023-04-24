@@ -29,8 +29,6 @@ public class G_DotController : MonoBehaviour
     private int count;
     private int sCount;
     private int cCount;
-    public int Bpm;
-    private float tickTime;
 
     private void Awake()
     {
@@ -40,7 +38,6 @@ public class G_DotController : MonoBehaviour
         count = 0;
         sCount = 0;
         cCount = 0;
-        tickTime = 0;
     }
     private void Start()
     {
@@ -51,8 +48,6 @@ public class G_DotController : MonoBehaviour
     }
     void Update()
     {
-        tickTime += Time.deltaTime;
-        Debug.Log(tickTime);
         if (tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position && cCount == 0)
         {
             GameManager.instance.SetGameState(GameState.gameClear);
@@ -71,16 +66,8 @@ public class G_DotController : MonoBehaviour
                 if(!Input.GetKeyDown(KeyCode.Escape))
                 {
                     count++;
-                    //if(tickTime >= (60 / Bpm) / 2)
-                    //{
-                    //    tickTime -= (60 / Bpm) / 2;
-                    //    if(tickTime >= 60 / Bpm)
-                    //    {
-                    //        Debug.Log("똑딱똑딱");
-                    //    }
-                    //}
-                    GameManager.instance.SetGameState(GameState.gameStart);
                     // 3 2 1 자리 / 이땐 판정 안들어가게 해야함 / 했음
+                    GameManager.instance.SetGameState(GameState.gameStart);
                     //
                     //StartCoroutine(GetMoveDotPos_co());
                 }

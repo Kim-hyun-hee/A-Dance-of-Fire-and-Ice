@@ -26,8 +26,11 @@ public class G_DotController : MonoBehaviour
     public float angle;
     private float moveVx;
     private float moveVy;
-    public int count;
-    public int sCount;
+    private int count;
+    private int sCount;
+    private int cCount;
+    public int Bpm;
+    private float tickTime;
 
     private void Awake()
     {
@@ -36,6 +39,8 @@ public class G_DotController : MonoBehaviour
         tiles = tileManagement.tiles;
         count = 0;
         sCount = 0;
+        cCount = 0;
+        tickTime = 0;
     }
     private void Start()
     {
@@ -46,9 +51,12 @@ public class G_DotController : MonoBehaviour
     }
     void Update()
     {
-        if (tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position)
+        tickTime += Time.deltaTime;
+        Debug.Log(tickTime);
+        if (tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position && cCount == 0)
         {
             GameManager.instance.SetGameState(GameState.gameClear);
+            cCount = 1;
         }
 
         if(isCenter && GameManager.instance.currentGameState != GameState.gameOver && GameManager.instance.currentGameState != GameState.gameClear)
@@ -58,13 +66,21 @@ public class G_DotController : MonoBehaviour
             {
                 sCount = 1;
             }
-            if (Input.anyKeyDown && GameManager.instance.currentGameState != GameState.loading)
+            if (Input.anyKeyDown && GameManager.instance.currentGameState != GameState.loading && GameManager.instance.currentGameState != GameState.pause)
             {
                 if(!Input.GetKeyDown(KeyCode.Escape))
                 {
                     count++;
-                    // 3 2 1 자리 / 이땐 판정 안들어가게 해야함
-                    GameManager.instance.StartGame();
+                    //if(tickTime >= (60 / Bpm) / 2)
+                    //{
+                    //    tickTime -= (60 / Bpm) / 2;
+                    //    if(tickTime >= 60 / Bpm)
+                    //    {
+                    //        Debug.Log("똑딱똑딱");
+                    //    }
+                    //}
+                    GameManager.instance.SetGameState(GameState.gameStart);
+                    // 3 2 1 자리 / 이땐 판정 안들어가게 해야함 / 했음
                     //
                     //StartCoroutine(GetMoveDotPos_co());
                 }

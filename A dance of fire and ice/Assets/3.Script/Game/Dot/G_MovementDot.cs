@@ -14,7 +14,7 @@ public class G_MovementDot : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.instance.currentGameState == GameState.gameStart || GameManager.instance.currentGameState == GameState.gameClear)
+        if (GameManager.instance.currentGameState == GameState.gameStart || GameManager.instance.currentGameState == GameState.gameClear || GameManager.instance.currentGameState == GameState.gameOver)
         {
             if (red.iscenter)
             {

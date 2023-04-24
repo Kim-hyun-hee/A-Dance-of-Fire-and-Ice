@@ -22,7 +22,7 @@ public class ScreenEff : MonoBehaviour
             {
                 break;
             }
-            UItransform.transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            UItransform.transform.position += moveDirection * moveSpeed;
             yield return 0.01f;
         }
         if (SceneManager.GetActiveScene().buildIndex == 0)

@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log(currentGameState);
 
-        if(Input.GetKeyDown(KeyCode.Escape)) // 일시정지
+        if(Input.GetKeyDown(KeyCode.Escape) && currentGameState != GameState.loading) // 일시정지
         {
             if(isPause == false)
             {
@@ -100,18 +100,6 @@ public class GameManager : MonoBehaviour
     public void LoadScene(int num)
     {
         SceneManager.LoadScene(num);
-    }
-    public void StartGame()
-    {
-        SetGameState(GameState.gameStart);
-    }
-    public void ClearGame()
-    {
-
-    }
-    public void EndGame()
-    {
-
     }
 
     public void SetGameState (GameState newGameState)

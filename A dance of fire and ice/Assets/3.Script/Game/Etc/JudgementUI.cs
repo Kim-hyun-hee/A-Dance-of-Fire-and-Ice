@@ -107,14 +107,14 @@ public class JudgementUI : MonoBehaviour
         }
         if(overloadQueue.Count > 2) // °úºÎÇÏ
         {
-            if (red.iscenter && num != 3 && num != 4)
+            if (red.iscenter)
             {
                 curPrefab = Instantiate(overLoadPrefab);
                 curPrefab.transform.SetParent(Canvas);
                 curPrefab.transform.localScale = Vector3.one;
                 curPrefab.GetComponent<JudgementUIPositionSet>().Setup(red.tiles[red.curIndex + 1].gameObject, num);
             }
-            if (blue.iscenter && num != 3 && num != 4)
+            if (blue.iscenter)
             {
                 curPrefab = Instantiate(overLoadPrefab);
                 curPrefab.transform.SetParent(Canvas);

@@ -3343,7 +3343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a1dd903e0c43a489bfb45187681678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bpm: 120
 --- !u!114 &311479531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3420,7 +3419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311479529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 411603182}
@@ -40345,6 +40344,9 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   screenEff: {fileID: 1322066646}
   isPause: 0
+  Bpm: 0
+  time: 0
+  isStart: 0
 --- !u!4 &1502942957
 Transform:
   m_ObjectHideFlags: 0
@@ -49210,7 +49212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a1dd903e0c43a489bfb45187681678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bpm: 120
 --- !u!114 &1872171778
 MonoBehaviour:
   m_ObjectHideFlags: 0

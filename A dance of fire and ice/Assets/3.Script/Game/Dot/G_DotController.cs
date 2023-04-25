@@ -74,7 +74,7 @@ public class G_DotController : MonoBehaviour
             }
             if (GameManager.instance.currentGameState == GameState.gameStart && sCount == 1) // 얘를 어떡하지
             {
-                if ((angle > 270 && angle < 290) && (count + anotherDot.count > 1)) // 매우느림
+                if ((angle > 270 && angle < 290) && GameManager.instance.isStart) // 매우느림
                 {
                     judgementui.SetJudgement(4);
                     // 실패처리

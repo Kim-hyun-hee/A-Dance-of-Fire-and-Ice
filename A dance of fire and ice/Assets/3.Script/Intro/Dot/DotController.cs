@@ -18,7 +18,7 @@ public class DotController : MonoBehaviour
     
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && GameManager.instance.currentGameState != GameState.pause)
         {
             if(!Input.GetKeyDown(KeyCode.Escape))
             {

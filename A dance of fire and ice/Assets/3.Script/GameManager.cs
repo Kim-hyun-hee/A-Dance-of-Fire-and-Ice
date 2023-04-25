@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool isPause;
     public float Bpm;
     public float time;
+    public bool isStart;
     private void Awake()
     {
         if (instance == null)
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(screenEff.Move_co());
         isPause = false;
         time = 60 / Bpm;
+        isStart = false;
     }
     private void Update()
     {

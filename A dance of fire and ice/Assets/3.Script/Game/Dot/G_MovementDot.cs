@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class G_MovementDot : MonoBehaviour
 {
-    [SerializeField] private float Bpm;
     private G_DotController red;
     private G_DotController blue;
     private void Awake()
@@ -18,11 +17,11 @@ public class G_MovementDot : MonoBehaviour
         {
             if (red.iscenter)
             {
-                blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * Bpm) / 60);
+                blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * GameManager.instance.Bpm) / 60);
             }
             else if (blue.iscenter)
             {
-                red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * Bpm) / 60);
+                red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * GameManager.instance.Bpm) / 60);
             }
         }
     }

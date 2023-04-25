@@ -11,7 +11,7 @@ public class PauseUI : MonoBehaviour
         if (GameManager.instance.currentGameState == GameState.pause)
         {
             pause_UI.SetActive(true);
-            for (int i = 4; i < transform.childCount; i++)
+            for (int i = 9; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
@@ -19,7 +19,7 @@ public class PauseUI : MonoBehaviour
         else
         {
             pause_UI.SetActive(false);
-            for (int i = 4; i < transform.childCount; i++) 
+            for (int i = 9; i < transform.childCount; i++) 
             {
                 transform.GetChild(i).gameObject.SetActive(true);
             }

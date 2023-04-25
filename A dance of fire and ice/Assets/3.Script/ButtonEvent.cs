@@ -14,9 +14,16 @@ public class ButtonEvent : MonoBehaviour
 
     public void Exit()
     {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1;
-        GameManager.instance.isPause = false;
+        if(SceneManager.GetActiveScene().buildIndex > 0)
+        {
+            SceneManager.LoadScene(0);
+            Time.timeScale = 1;
+            GameManager.instance.isPause = false;
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Application.Quit();
+        }
     }
 
     public void Play()

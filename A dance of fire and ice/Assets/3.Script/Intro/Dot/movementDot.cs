@@ -6,7 +6,6 @@ public class movementDot : MonoBehaviour
 {
     private DotController red;
     private DotController blue;
-    public float Bpm;
     private void Awake()
     {
         GameObject.FindGameObjectWithTag("Red").GetComponent<DotController>().TryGetComponent(out red);
@@ -14,13 +13,13 @@ public class movementDot : MonoBehaviour
     }
     void Update()
     {
-        if (red.iscenter)
+        if (red.iscenter && GameManager.instance.currentGameState == GameState.lobi)
         {
-            blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * Bpm) / 60);
+            blue.transform.RotateAround(red.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * GameManager.instance.Bpm) / 60);
         }
-        else if (blue.iscenter)
+        else if (blue.iscenter && GameManager.instance.currentGameState == GameState.lobi)
         {
-            red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * Bpm) / 60);
+            red.transform.RotateAround(blue.transform.position, new Vector3(0, 0, -1), (90 * Time.deltaTime * GameManager.instance.Bpm) / 60);
         }
     }
 

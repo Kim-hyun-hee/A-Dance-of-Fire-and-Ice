@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(currentGameState);
+        //Debug.Log(currentGameState);
 
         if(Input.GetKeyDown(KeyCode.Escape) && currentGameState != GameState.loading) // 일시정지
         {

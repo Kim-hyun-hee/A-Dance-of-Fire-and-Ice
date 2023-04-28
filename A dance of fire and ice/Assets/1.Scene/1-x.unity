@@ -5790,6 +5790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damping: 2
+  backGround: {fileID: 1110740963}
 --- !u!81 &210487045
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9091,7 +9092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &397029590
 MonoBehaviour:
   m_ObjectHideFlags: 0

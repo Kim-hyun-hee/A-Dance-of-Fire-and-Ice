@@ -10,10 +10,19 @@ public class X_CameraMovement : MonoBehaviour
     private float damping = 2.0f;
     private G_DotController center;
     private Vector2 centerpos;
+    [SerializeField]
+    private GameObject backGround;
+
+    private Color orignalColor;
+    private Color bgColor;
+    private Color transColor;
     private void Awake()
     {
         red = GameObject.FindGameObjectWithTag("Red").GetComponent<G_DotController>();
         blue = GameObject.FindGameObjectWithTag("Blue").GetComponent<G_DotController>();
+
+        transColor = new Color(255, 255, 255, 0f);
+        bgColor = backGround.GetComponent<SpriteRenderer>().color;
     }
     private void Update()
     {
@@ -28,153 +37,169 @@ public class X_CameraMovement : MonoBehaviour
         centerpos = new Vector2(center.transform.position.x, center.transform.position.y);
         if(centerpos.x == 31 && centerpos.y == 0)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.0833f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 31 && centerpos.y == -1)
         {
-            Debug.Log("돌아오기");
-            StartCoroutine(cameraOriginal_co(0.1f, 0.01f, 0f));
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x == 46 && centerpos.y == -1)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.0833f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 46 && centerpos.y == -2)
         {
-            Debug.Log("돌아오기");
-            StartCoroutine(cameraOriginal_co(0.1f, 0.01f, 0f));
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x == 61 && centerpos.y == -2)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.0833f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 61 && centerpos.y == -3)
         {
-            Debug.Log("돌아오기");
-            StartCoroutine(cameraOriginal_co(0.1f, 0.01f, 0f));
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x == 76 && centerpos.y == -3)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.0833f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 76 && centerpos.y == -2)
         {
-            Debug.Log("돌아오기");
-            StartCoroutine(cameraOriginal_co(0.1f, 0.01f, 0f));
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x == 91 && centerpos.y == -2)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.0833f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 91 && centerpos.y == -1)
         {
-            Debug.Log("돌아오기");
-            StartCoroutine(cameraOriginal_co(0.1f, 0.01f, 0f));
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x ==104 && centerpos.y == -1)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.05f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.05f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 104 && centerpos.y == 0)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.1f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.1f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
         }
         else if (centerpos.x == 105 && centerpos.y == 0)
         {
-            Debug.Log("기울기1");
-            StartCoroutine(cameraRotate_co(0.1f, 0.01f, 0.15f));
+            StartCoroutine(cameraRotate_co(0.1f, 0.15f));
+            StartCoroutine(cameraBounce_co(0.05f, 3f));
         }
         else if (centerpos.x == 105 && centerpos.y == 1)
         {
-            Debug.Log("돌아오기");
-            StartCoroutine(cameraOriginal_co(0.1f, 0.01f, 0f));
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x == 114 && centerpos.y == 1)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.04f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 114 && centerpos.y == 0)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.08f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
         }
         else if (centerpos.x == 115 && centerpos.y == 0)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.12f));
+            StartCoroutine(cameraBounce_co(0.05f, 3f));
         }
         else if (centerpos.x == 115 && centerpos.y == -1)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.16f));
+            StartCoroutine(cameraBounce_co(0.05f, 2.5f));
         }
         else if (centerpos.x == 116 && centerpos.y == -1)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.2f));
+            StartCoroutine(cameraBounce_co(0.05f, 2f));
         }
         else if (centerpos.x == 116 && centerpos.y == -2)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.24f));
         }
         else if (centerpos.x == 117 && centerpos.y == -2)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.28f));
         }
         else if (centerpos.x == 117 && centerpos.y == -3)
         {
-            Debug.Log("돌아오기");
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
         }
         else if (centerpos.x == 130 && centerpos.y == -3)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.05f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 130 && centerpos.y == -2)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.1f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
         }
         else if (centerpos.x == 131 && centerpos.y == -2)
         {
-            Debug.Log("기울기1");
+            StartCoroutine(cameraRotate_co(0.1f, 0.15f));
+            StartCoroutine(cameraBounce_co(0.05f, 3f));
         }
         else if (centerpos.x == 131 && centerpos.y == -1)
         {
-            Debug.Log("돌아오기");
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x == 140 && centerpos.y == -1)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.03f));
+            StartCoroutine(cameraBounce_co(0.05f, 4f));
         }
         else if (centerpos.x == 140 && centerpos.y == -2)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.06f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.6f));
         }
         else if (centerpos.x == 141 && centerpos.y == -2)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.09f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.2f));
         }
         else if (centerpos.x == 141 && centerpos.y == -3)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.12f));
+            StartCoroutine(cameraBounce_co(0.05f, 2.8f));
         }
         else if (centerpos.x == 142 && centerpos.y == -3)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.15f));
+            StartCoroutine(cameraBounce_co(0.05f, 2.4f));
         }
         else if (centerpos.x == 143 && centerpos.y == -3)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.18f));
+            StartCoroutine(cameraBounce_co(0.05f, 2f));
         }
         else if (centerpos.x == 144 && centerpos.y == -3)
         {
-            Debug.Log("기울기");
+            StartCoroutine(cameraRotate_co(0.1f, 0.21f));
         }
         else if (centerpos.x == 144 && centerpos.y == -2)
         {
-            Debug.Log("돌아오기");
+            StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
         }
         else if (centerpos.x >= 16)
         {
@@ -182,8 +207,8 @@ public class X_CameraMovement : MonoBehaviour
             {
                 if(!Input.GetKeyDown(KeyCode.Escape))
                 {
-                    StopCoroutine(cameraBounce_co_2());
-                    StartCoroutine(cameraBounce_co_2());
+                    StopCoroutine(cameraBounce_big_co());
+                    StartCoroutine(cameraBounce_big_co());
                 }
             }
         }
@@ -193,8 +218,8 @@ public class X_CameraMovement : MonoBehaviour
             {
                 if (!Input.GetKeyDown(KeyCode.Escape) && GameManager.instance.currentGameState == GameState.gameStart)
                 {
-                    StopCoroutine(cameraBounce_co_1());
-                    StartCoroutine(cameraBounce_co_1());
+                    StopCoroutine(cameraBounce_small_co());
+                    StartCoroutine(cameraBounce_small_co());
                 }
             }
         }
@@ -207,11 +232,11 @@ public class X_CameraMovement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * damping);
     }
 
-    IEnumerator cameraBounce_co_1()
+    IEnumerator cameraBounce_small_co()
     {
         float increment1 = 0.05f;
         float increment2 = 0.01f;
-        while (Camera.main.orthographicSize >= 4.95)
+        while (Camera.main.orthographicSize >= 4.96)
         {
             Camera.main.orthographicSize -= increment1;
             yield return new WaitForSeconds(0.001f);
@@ -223,7 +248,7 @@ public class X_CameraMovement : MonoBehaviour
         }
     }
 
-    IEnumerator cameraBounce_co_2()
+    IEnumerator cameraBounce_big_co()
     {
         float increment1 = 0.05f;
         float increment2 = 0.01f;
@@ -239,23 +264,38 @@ public class X_CameraMovement : MonoBehaviour
         }
     }
 
-    IEnumerator cameraRotate_co(float increment1, float increment2, float degree) // 0.08333 == 15 0.1 0.01
+    IEnumerator cameraRotate_co(float increment1, float degree) // 0.08333 == 15 0.1 0.01
     {
         while (Camera.main.transform.rotation.z <= degree)
         {
             Camera.main.transform.Rotate(0, 0, increment1);
-            Camera.main.orthographicSize -= increment2;
             yield return new WaitForSeconds(0.001f);
         }
     }
 
-    IEnumerator cameraOriginal_co(float increment1, float increment2, float degree)
+    IEnumerator cameraOriginal_co(float increment1, float degree)
     {
         while (Camera.main.transform.rotation.z >= degree)
         {
             Camera.main.transform.Rotate(0, 0, -increment1);
-            Camera.main.orthographicSize += increment2;
             yield return new WaitForSeconds(0.001f);
+        }
+    }
+    IEnumerator cameraBounce_co(float increment1, float degree)
+    {
+        while (Camera.main.orthographicSize >= degree)
+        {
+            Camera.main.orthographicSize -= increment1;
+            yield return new WaitForSeconds(0.001f);
+        }
+    }
+
+    IEnumerator cameraBounceOriginal_co(float increment1, float degree)
+    {
+        while (Camera.main.orthographicSize < degree)
+        {
+            Camera.main.orthographicSize += increment1;
+            yield return new WaitForSeconds(0.02f);
         }
     }
 }

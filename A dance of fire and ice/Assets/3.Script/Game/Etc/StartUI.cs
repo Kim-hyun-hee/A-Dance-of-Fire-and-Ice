@@ -6,7 +6,7 @@ public class StartUI : MonoBehaviour
 {
     private float time;
     private float tickTime;
-    public bool isCount;
+    private bool isCount;
     private void Awake()
     {
         time = 0;

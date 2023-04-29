@@ -21,8 +21,9 @@ public class X_CameraMovement : MonoBehaviour
         red = GameObject.FindGameObjectWithTag("Red").GetComponent<G_DotController>();
         blue = GameObject.FindGameObjectWithTag("Blue").GetComponent<G_DotController>();
 
-        transColor = new Color(255, 255, 255, 0f);
+        transColor = Color.gray;
         bgColor = backGround.GetComponent<SpriteRenderer>().color;
+        orignalColor = bgColor;
     }
     private void Update()
     {
@@ -39,56 +40,67 @@ public class X_CameraMovement : MonoBehaviour
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 31 && centerpos.y == -1)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 46 && centerpos.y == -1)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 46 && centerpos.y == -2)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 61 && centerpos.y == -2)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 61 && centerpos.y == -3)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 76 && centerpos.y == -3)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 76 && centerpos.y == -2)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 91 && centerpos.y == -2)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 91 && centerpos.y == -1)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x ==104 && centerpos.y == -1)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.05f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 104 && centerpos.y == 0)
         {
@@ -104,11 +116,13 @@ public class X_CameraMovement : MonoBehaviour
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 114 && centerpos.y == 1)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.04f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 114 && centerpos.y == 0)
         {
@@ -141,11 +155,13 @@ public class X_CameraMovement : MonoBehaviour
         else if (centerpos.x == 117 && centerpos.y == -3)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 130 && centerpos.y == -3)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.05f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 130 && centerpos.y == -2)
         {
@@ -161,11 +177,13 @@ public class X_CameraMovement : MonoBehaviour
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x == 140 && centerpos.y == -1)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.03f));
             StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 140 && centerpos.y == -2)
         {
@@ -200,6 +218,7 @@ public class X_CameraMovement : MonoBehaviour
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
+            StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
         else if (centerpos.x >= 16)
         {
@@ -230,6 +249,20 @@ public class X_CameraMovement : MonoBehaviour
         targetPos.x = centerpos.x;
         targetPos.y = centerpos.y;
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * damping);
+    }
+
+    IEnumerator LerpColor_co(Color original, Color trans)
+    {
+        float progress = 0;
+        float increment = 0.05f;
+        while (progress < 1)
+        {
+            bgColor = Color.Lerp(original, trans, progress);
+            backGround.GetComponent<SpriteRenderer>().color = bgColor;
+
+            progress += increment;
+            yield return new WaitForSeconds(0.001f);
+        }
     }
 
     IEnumerator cameraBounce_small_co()

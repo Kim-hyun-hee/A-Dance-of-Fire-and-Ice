@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
-using UnityEngine.SceneManagement;
 
 public class DotController : MonoBehaviour
-{[SerializeField] private bool isCenter;
+{
+    [SerializeField] private bool isCenter;
     [SerializeField] private DotController anotherDot;
+    [SerializeField] private GameObject stage1Ex;
+    [SerializeField] private GameObject stage2Ex;
     public bool iscenter => isCenter;
     
     private float dist;
@@ -16,9 +18,12 @@ public class DotController : MonoBehaviour
     
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && GameManager.instance.currentGameState != GameState.pause)
         {
-            StartCoroutine(setPosition_co());
+            if(!Input.GetKeyDown(KeyCode.Escape))
+            {
+                StartCoroutine(setPosition_co());
+            }
         }
     }
     IEnumerator setPosition_co()
@@ -33,9 +38,25 @@ public class DotController : MonoBehaviour
             }
             else if (!isCenter && !anotherDot.pass)
             {
-                if(movePos.x == 13 && movePos.y == -1)
+                if (movePos.x == 13 && movePos.y == -2)
                 {
-                    SceneManager.LoadScene(7);
+                    stage1Ex.SetActive(true);
+                }
+                else
+                {
+                    stage1Ex.SetActive(false);
+                }
+                if (movePos.x == 20 && movePos.y == -2)
+                {
+                    stage2Ex.SetActive(true);
+                }
+                else
+                {
+                    stage2Ex.SetActive(false);
+                }
+                if (movePos.x == 13 && movePos.y == -1)
+                {
+                    GameManager.instance.LoadScene(1);
                     gameObject.transform.position = new Vector2(movePos.x, movePos.y);
                     isCenter = !isCenter;
                 }

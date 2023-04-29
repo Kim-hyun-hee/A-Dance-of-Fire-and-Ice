@@ -23,12 +23,12 @@ public class circleController : MonoBehaviour
     {
         redRing.transform.Rotate(speed * Time.deltaTime * new Vector3(0, 0, -1));
         blueRing.transform.Rotate(speed * Time.deltaTime * new Vector3(0, 0, -1));
-        if (red.iscenter)
+        if (red.iscenter && GameManager.instance.currentGameState == GameState.lobi)
         {
             blueRing.SetActive(false);
             redRing.SetActive(true);
         }
-        else if (blue.iscenter)
+        else if (blue.iscenter && GameManager.instance.currentGameState == GameState.lobi)
         {
             blueRing.SetActive(true);
             redRing.SetActive(false);

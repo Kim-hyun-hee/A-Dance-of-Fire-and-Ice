@@ -8,6 +8,8 @@ TagManager:
   - Red
   - Tile
   - boundary
+  - UpDown
+  - Rotate
   layers:
   - Default
   - TransparentFX

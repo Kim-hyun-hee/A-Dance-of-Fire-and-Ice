@@ -12,26 +12,44 @@ public class G_CircleController : MonoBehaviour
     private GameObject blueRing;
     [SerializeField]
     private float speed;
+    private SpriteRenderer blueRenderer;
+    private SpriteRenderer redRenderer;
+    private SpriteRenderer blueDotRenderer;
 
     void Awake()
     {
         GameObject.FindGameObjectWithTag("Red").GetComponent<G_DotController>().TryGetComponent(out red);
         GameObject.FindGameObjectWithTag("Blue").GetComponent<G_DotController>().TryGetComponent(out blue);
+        blueRenderer = blueRing.GetComponent<SpriteRenderer>();
+        redRenderer = redRing.GetComponent<SpriteRenderer>();
+        blueDotRenderer = blue.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        redRing.transform.Rotate(speed * Time.deltaTime * new Vector3(0, 0, -1));
-        blueRing.transform.Rotate(speed * Time.deltaTime * new Vector3(0, 0, -1));
-        if (red.iscenter)
+        if(GameManager.instance.currentGameState == GameState.inGame || GameManager.instance.currentGameState == GameState.loading)
         {
-            blueRing.SetActive(false);
-            redRing.SetActive(true);
+            blueRenderer.enabled = false;
+            redRenderer.enabled = false;
+            blueDotRenderer.enabled = false;
         }
-        else if (blue.iscenter)
+        
+        if(GameManager.instance.currentGameState == GameState.gameStart || GameManager.instance.currentGameState == GameState.gameClear)
         {
-            blueRing.SetActive(true);
-            redRing.SetActive(false);
+            blueDotRenderer.enabled = true;
+            if (red.iscenter)
+            {
+                blueRenderer.enabled = false;
+                redRenderer.enabled = true;
+            }
+            else if (blue.iscenter)
+            {
+                blueRenderer.enabled = true;
+                redRenderer.enabled = false;
+            }
+            redRing.transform.Rotate(speed * Time.deltaTime * new Vector3(0, 0, -1));
+            blueRing.transform.Rotate(speed * Time.deltaTime * new Vector3(0, 0, -1));
         }
     }
+    
 }

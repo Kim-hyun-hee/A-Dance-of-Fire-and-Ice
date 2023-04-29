@@ -2,30 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
+using UnityEngine.SceneManagement;
 
 public class G_DotController : MonoBehaviour
 {
     [SerializeField] private bool isCenter;
     [SerializeField] private G_DotController anotherDot;
     public bool iscenter => isCenter;
-    private bool isCollision;
     [SerializeField]
-    private int curIndex;
-    private int nextIndex;
-    public int nextindex => nextIndex;
-    [SerializeField]
-    private List<Transform> tiles;
+    public int curIndex;
+    [SerializeField] 
+    public List<Transform> tiles;
     private G_TileManagement tileManagement;
     [SerializeField]
     private GameObject collTile;
-    public Vector2Int movePos;
+    [SerializeField]
+    public Vector3Int movePos;
+    public Vector3 moveCenterPos;
+    private Vector3 anotherV;
     private JudgementUI judgementui;
+    [SerializeField]
+    private ScoreUI scoreui;
+    public float angle;
+    private float moveVx;
+    private float moveVy;
+    private int count;
+    private int sCount;
+    private int cCount;
 
     private void Awake()
     {
         FindObjectOfType<G_TileManagement>().transform.TryGetComponent(out tileManagement);
         FindObjectOfType<JudgementUI>().gameObject.TryGetComponent(out judgementui);
         tiles = tileManagement.tiles;
+        count = 0;
+        sCount = 0;
+        cCount = 0;
     }
     private void Start()
     {
@@ -36,91 +48,110 @@ public class G_DotController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (tiles[tiles.Count - 1].gameObject.transform.localPosition == transform.position && cCount == 0)
         {
-            StartCoroutine(MoveDot_co());
+            GameManager.instance.SetGameState(GameState.gameClear);
+            cCount = 1;
+        }
+
+        if(isCenter && GameManager.instance.currentGameState != GameState.gameOver && GameManager.instance.currentGameState != GameState.gameClear)
+        {
+            StartCoroutine(GetMoveDotPos_co());
+            if(angle < 180)
+            {
+                sCount = 1;
+            }
+            if (Input.anyKeyDown && GameManager.instance.currentGameState != GameState.loading && GameManager.instance.currentGameState != GameState.pause)
+            {
+                if(!Input.GetKeyDown(KeyCode.Escape))
+                {
+                    count++;
+                    // 3 2 1 자리 / 이땐 판정 안들어가게 해야함 / 했음
+                    GameManager.instance.SetGameState(GameState.gameStart);
+                    //
+                    //StartCoroutine(GetMoveDotPos_co());
+                }
+            }
+            if (GameManager.instance.currentGameState == GameState.gameStart && sCount == 1) // 얘를 어떡하지
+            {
+                if ((angle > 270 && angle < 290) && GameManager.instance.isStart) // 매우느림
+                {
+                    judgementui.SetJudgement(4);
+                    // 실패처리
+                    GameManager.instance.SetGameState(GameState.gameOver);
+                    if (SceneManager.GetActiveScene().buildIndex == 7)
+                    {
+                        scoreui.SetScore((curIndex + 1) * 100 / tiles.Count);
+                    }
+                }
+            }
         }
     }
-
-    IEnumerator MoveDot_co()
+    IEnumerator GetMoveDotPos_co()
     {
-        IsColNextTile();
         yield return null;
-        if (isCollision)
+        anotherV = new Vector3(anotherDot.transform.position.x - tiles[curIndex].localPosition.x, anotherDot.transform.position.y - tiles[curIndex].localPosition.y, 0);
+        Vector3 baseV = new Vector3(tiles[curIndex + 1].localPosition.x - tiles[curIndex].localPosition.x, tiles[curIndex + 1].localPosition.y - tiles[curIndex].localPosition.y, 0);
+        float dot = Vector3.Dot(baseV, anotherV);
+        angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
+        Vector3 cross = Vector3.Cross(baseV, anotherV); // 0보다 크면 빨리 누른거
+        if (cross.z < 0)
         {
-            Judgement();
-            //SetNextPos();
-            movePos = new Vector2Int((int)tiles[nextIndex].localPosition.x, (int)tiles[nextIndex].localPosition.y);
-            yield return null;
-            anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
-            tiles[nextIndex].GetChild(0).gameObject.SetActive(true);
-            ChangeState();
-            yield return null;
+            angle = 360 - angle;
         }
-        else if (anotherDot.transform.position.y > tiles[nextIndex].localPosition.y)
+        float ang = angle * Mathf.Deg2Rad;
+        moveVx = baseV.x * Mathf.Cos((ang + Mathf.PI)) - baseV.y * Mathf.Sin((ang + Mathf.PI));
+        moveVy = baseV.x * Mathf.Sin((ang + Mathf.PI)) + baseV.y * Mathf.Cos((ang + Mathf.PI));
+        if (GameManager.instance.currentGameState == GameState.gameStart && Input.anyKeyDown && sCount == 1)
         {
-            judgementui.SetJudgement(3);
-        }
-        else if (anotherDot.transform.position.y < tiles[nextIndex].localPosition.y)
-        {
-            judgementui.SetJudgement(4);
+            if(!Input.GetKeyDown(KeyCode.Escape))
+            {
+                if ((angle < 15 || angle >= 345) && (count + anotherDot.count > 1)) // 정확
+                {
+                    judgementui.SetJudgement(0);
+                }
+                if ((angle >= 15 && angle < 30) && (count + anotherDot.count > 1)) // 빠름(초록)
+                {
+                    judgementui.SetJudgement(1);
+                }
+                if ((angle >= 30 && angle < 60) && (count + anotherDot.count > 1)) // 빠름(주황)
+                {
+                    judgementui.SetJudgement(2);
+                }
+                if ((angle >= 290 && angle < 330) && (count + anotherDot.count > 1)) // 느림(주황)
+                {
+                    judgementui.SetJudgement(5);
+                }
+                if ((angle >= 330 && angle < 345) && (count + anotherDot.count > 1)) // 느림(초록)
+                {
+                    judgementui.SetJudgement(6);
+                }
+                if ((angle >= 60 && angle <= 180) && (count + anotherDot.count > 1)) // 매우빠름
+                {
+                    judgementui.SetJudgement(3);
+                }
+                if ((angle < 70 || angle > 290) && (angle < 60 || angle > 180))
+                {
+                    sCount = 0;
+                    moveCenterPos = new Vector3((int)tiles[curIndex + 1].localPosition.x + moveVx, (int)tiles[curIndex + 1].localPosition.y + moveVy, 0); // 센터 공 싱크 조절용
+                    movePos = new Vector3Int((int)tiles[curIndex + 1].localPosition.x, (int)tiles[curIndex + 1].localPosition.y, 0); // 도는 공이 정착할 타일 좌표
+                    anotherDot.transform.position = new Vector2(movePos.x, movePos.y);
+                    transform.position = new Vector2(moveCenterPos.x, moveCenterPos.y);
+                    tiles[curIndex + 1].GetChild(0).gameObject.SetActive(true);
+                    if (curIndex + 2 < tiles.Count - 1)
+                    {
+                        curIndex += 2;
+                    }
+                    ChangeState();
+                }
+            }
         }
     }
-
     private void ChangeState()
     {
         isCenter = !isCenter;
         anotherDot.isCenter = !anotherDot.isCenter;
     }
-    private void IsColNextTile()
-    {
-        // 돌고 있는 공이 블럭이랑 충돌인지 아닌지 구함 iscollision
-        foreach (Collider2D col in Physics2D.OverlapCircleAll(new Vector2(anotherDot.transform.position.x, anotherDot.transform.position.y), 0.32f))
-        {
-            if (col.gameObject.CompareTag("Tile")) // 타일과 충돌하면
-            {
-                int i;
-                for (i = 0; i < tiles.Count; i++) // 어느 타일인지 index 찾기
-                {
-                    if (tiles[i].localPosition.x == col.gameObject.transform.localPosition.x && tiles[i].localPosition.y == col.gameObject.transform.localPosition.y)
-                    {
-                        nextIndex = i;
-                        break;
-                    }
-                }
-                if (nextIndex == curIndex + 1) // 찾은 index가 currentIndex + 1 이라면
-                {
-                    collTile = col.gameObject; // 다음 블럭임
-                    curIndex += 2;
-                    isCollision = true;
-                    break;
-                }
-            }
-            else
-            {
-                collTile = GameObject.FindGameObjectWithTag("boundary").GetComponent<GameObject>();
-                isCollision = false;
-            }
-        }
-    }
-
-    private void Judgement() // curIndex + 1 == nextIndex 일때
-    {
-        float dist;
-        dist = Vector2.Distance(anotherDot.transform.position, tiles[nextIndex].localPosition);
-        if (dist < 0.3)
-        {
-            judgementui.SetJudgement(0);
-        }
-        else if (anotherDot.transform.position.y > tiles[nextIndex].localPosition.y)
-        {
-            judgementui.SetJudgement(1);
-        }
-        else if (anotherDot.transform.position.y < tiles[nextIndex].localPosition.y)
-        {
-            judgementui.SetJudgement(2);
-        }
-    }
 }
 
-    
+

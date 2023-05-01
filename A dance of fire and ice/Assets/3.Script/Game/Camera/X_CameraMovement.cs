@@ -36,61 +36,61 @@ public class X_CameraMovement : MonoBehaviour
             center = blue;
         }
         centerpos = new Vector2(center.transform.position.x, center.transform.position.y);
-        if(centerpos.x == 31 && centerpos.y == 0)
+        if((centerpos.x == 31 && centerpos.y == 0) || (centerpos.x == 31 && centerpos.y == -1))
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
-            StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
             StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
-        else if (centerpos.x == 31 && centerpos.y == -1)
+        else if (centerpos.x == 32 && centerpos.y == -1)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
             StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
-        else if (centerpos.x == 46 && centerpos.y == -1)
+        else if ((centerpos.x == 46 && centerpos.y == -1) || (centerpos.x == 46 && centerpos.y == -2))
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
-            StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
             StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
-        else if (centerpos.x == 46 && centerpos.y == -2)
+        else if (centerpos.x == 47 && centerpos.y == -2)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
             StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
-        else if (centerpos.x == 61 && centerpos.y == -2)
+        else if ((centerpos.x == 61 && centerpos.y == -2) || (centerpos.x == 61 && centerpos.y == -3))
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
-            StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
             StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
-        else if (centerpos.x == 61 && centerpos.y == -3)
+        else if (centerpos.x == 62 && centerpos.y == -3)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
             StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
-        else if (centerpos.x == 76 && centerpos.y == -3)
+        else if ((centerpos.x == 76 && centerpos.y == -3) || (centerpos.x == 76 && centerpos.y == -2))
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
-            StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
             StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
-        else if (centerpos.x == 76 && centerpos.y == -2)
+        else if (centerpos.x == 77 && centerpos.y == -2)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
             StartCoroutine(LerpColor_co(transColor, orignalColor));
         }
-        else if (centerpos.x == 91 && centerpos.y == -2)
+        else if ((centerpos.x == 91 && centerpos.y == -2) || (centerpos.x == 91 && centerpos.y == -1))
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.0833f));
-            StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
             StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
-        else if (centerpos.x == 91 && centerpos.y == -1)
+        else if (centerpos.x == 92 && centerpos.y == -1)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
@@ -99,20 +99,20 @@ public class X_CameraMovement : MonoBehaviour
         else if (centerpos.x ==104 && centerpos.y == -1)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.05f));
-            StartCoroutine(cameraBounce_co(0.05f, 4f));
+            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
             StartCoroutine(LerpColor_co(orignalColor, transColor));
         }
         else if (centerpos.x == 104 && centerpos.y == 0)
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.1f));
-            StartCoroutine(cameraBounce_co(0.05f, 3.5f));
-        }
-        else if (centerpos.x == 105 && centerpos.y == 0)
-        {
-            StartCoroutine(cameraRotate_co(0.1f, 0.15f));
             StartCoroutine(cameraBounce_co(0.05f, 3f));
         }
-        else if (centerpos.x == 105 && centerpos.y == 1)
+        else if ((centerpos.x == 105 && centerpos.y == 0) || (centerpos.x == 105 && centerpos.y == 1))
+        {
+            StartCoroutine(cameraRotate_co(0.1f, 0.15f));
+            StartCoroutine(cameraBounce_co(0.05f, 2.5f));
+        }
+        else if (centerpos.x == 106 && centerpos.y == 1)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(cameraBounceOriginal_co(0.05f, 5f));
@@ -148,11 +148,11 @@ public class X_CameraMovement : MonoBehaviour
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.24f));
         }
-        else if (centerpos.x == 117 && centerpos.y == -2)
+        else if ((centerpos.x == 117 && centerpos.y == -2) || (centerpos.x == 117 && centerpos.y == -3))
         {
             StartCoroutine(cameraRotate_co(0.1f, 0.28f));
         }
-        else if (centerpos.x == 117 && centerpos.y == -3)
+        else if (centerpos.x == 118 && centerpos.y == -3)
         {
             StartCoroutine(cameraOriginal_co(0.1f, 0f));
             StartCoroutine(LerpColor_co(transColor, orignalColor));
